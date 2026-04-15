@@ -1,200 +1,229 @@
-// ========== DOM ELEMENTS ==========
-const navbar = document.getElementById('navbar');
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-const backToTop = document.getElementById('backToTop');
-const serverTabs = document.querySelectorAll('.server-tab');
-const serverContents = document.querySelectorAll('.server-content');
-const statNumbers = document.querySelectorAll('.stat-number');
+/* ========================================
+   LET CONNECT VPN - MAIN JAVASCRIPT
+   ======================================== */
 
-// ========== NAVBAR SCROLL ==========
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+document.addEventListener('DOMContentLoaded', function () {
 
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+    // ========== MOBILE NAV TOGGLE ==========
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
 
-    // Back to top visibility
-    if (currentScroll > 500) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-
-    lastScroll = currentScroll;
-});
-
-// ========== MOBILE NAV TOGGLE ==========
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+    navToggle.addEventListener('click', function () {
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
-});
 
-// Close nav on outside click
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav-container')) {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-    }
-});
-
-// ========== ACTIVE NAV LINK ON SCROLL ==========
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset + 100;
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
-
-        if (navLink) {
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                navLink.classList.add('active');
-            } else {
-                navLink.classList.remove('active');
-            }
-        }
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
     });
-});
 
-// ========== BACK TO TOP ==========
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    // ========== NAVBAR SCROLL EFFECT ==========
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
 
-// ========== SERVER TABS ==========
-serverTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const targetTab = tab.dataset.tab;
+    window.addEventListener('scroll', function () {
+        const currentScroll = window.pageYOffset;
 
-        serverTabs.forEach(t => t.classList.remove('active'));
-        serverContents.forEach(c => c.classList.remove('active'));
-
-        tab.classList.add('active');
-        document.getElementById(`tab-${targetTab}`).classList.add('active');
-    });
-});
-
-// ========== COUNT UP ANIMATION ==========
-function animateCountUp(el) {
-    const target = parseInt(el.dataset.count);
-    const duration = 2000;
-    const start = performance.now();
-
-    function update(currentTime) {
-        const elapsed = currentTime - start;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(eased * target);
-
-        el.textContent = current.toLocaleString();
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            el.textContent = target.toLocaleString();
+            navbar.classList.remove('scrolled');
         }
+
+        lastScroll = currentScroll;
+    });
+
+    // ========== ACTIVE NAV LINK ON SCROLL ==========
+    const sections = document.querySelectorAll('section[id]');
+
+    function activateNavLink() {
+        const scrollY = window.pageYOffset + 100;
+
+        sections.forEach(function (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                document.querySelectorAll('.nav-links a').forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                const activeLink = document.querySelector('.nav-links a[href="#' + sectionId + '"]');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
     }
 
-    requestAnimationFrame(update);
-}
+    window.addEventListener('scroll', activateNavLink);
 
-// Intersection Observer for stats
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statEl = entry.target;
-            animateCountUp(statEl);
-            statsObserver.unobserve(statEl);
+    // ========== COUNTER ANIMATION ==========
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number[data-count]');
+
+        counters.forEach(function (counter) {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            function updateCounter() {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            }
+
+            updateCounter();
+        });
+    }
+
+    // Run counter animation when hero section is visible
+    const heroObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                animateCounters();
+                heroObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroObserver.observe(heroSection);
+    }
+
+    // ========== FAQ ACCORDION ==========
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function (item) {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question.addEventListener('click', function () {
+            const isActive = item.classList.contains('active');
+
+            // Close all items
+            faqItems.forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
+    // ========== BACK TO TOP BUTTON ==========
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
         }
     });
-}, { threshold: 0.5 });
 
-statNumbers.forEach(num => statsObserver.observe(num));
-
-// ========== SCROLL REVEAL ANIMATION ==========
-const revealElements = document.querySelectorAll('.feature-card, .step, .pricing-card, .server-card, .contact-card');
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            revealObserver.unobserve(entry.target);
-        }
+    backToTop.addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-});
 
-revealElements.forEach((el, index) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index % 6 * 0.1}s`;
-    revealObserver.observe(el);
-});
+    // ========== SCROLL REVEAL ANIMATION ==========
+    const revealElements = document.querySelectorAll(
+        '.feature-card, .server-type-card, .pricing-card, .download-card, .contact-card, .bonus-card, .faq-item'
+    );
 
-// ========== DOWNLOAD BUTTON ==========
-// CHANGE THIS URL to your actual APK download link
-const APK_DOWNLOAD_URL = 'https://your-download-link.com/let-connect-vpn.apk';
+    const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
-const downloadBtn = document.getElementById('downloadBtn');
-if (downloadBtn) {
-    downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+    revealElements.forEach(function (el, index) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease ' + (index % 3) * 0.1 + 's, transform 0.6s ease ' + (index % 3) * 0.1 + 's';
+        revealObserver.observe(el);
+    });
 
-        // Trigger download
-        const link = document.createElement('a');
-        link.href = APK_DOWNLOAD_URL;
-        link.download = 'Let-Connect-VPN.apk';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    // ========== DOWNLOAD BUTTONS ==========
+    // VPN APK download link - CHANGE THIS URL
+    const vpnDownloadBtn = document.getElementById('vpnDownloadBtn');
+    if (vpnDownloadBtn) {
+        vpnDownloadBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            // ============================================
+            // ⬇️ ဒီ URL ကို သင့် VPN APK link နဲ့ ပြောင်းပါ
+            // ============================================
+            var vpnApkUrl = 'https://example.com/your-vpn-app.apk';
+            window.open(vpnApkUrl, '_blank');
+        });
+    }
 
-        // Visual feedback
-        downloadBtn.innerHTML = '<i class="fas fa-check"></i><div><small>Downloading...</small><strong>Please Wait</strong></div>';
-        setTimeout(() => {
-            downloadBtn.innerHTML = '<i class="fab fa-android"></i><div><small>Download</small><strong>Android APK</strong></div>';
+    // Lugyi APK download link - CHANGE THIS URL
+    const lugyiDownloadBtn = document.getElementById('lugyiDownloadBtn');
+    if (lugyiDownloadBtn) {
+        lugyiDownloadBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            // ============================================
+            // ⬇️ ဒီ URL ကို သင့် Lugyi APK link နဲ့ ပြောင်းပါ
+            // ============================================
+            var lugyiApkUrl = 'https://example.com/lugyi-app.apk';
+            window.open(lugyiApkUrl, '_blank');
+        });
+    }
+
+    // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ========== TYPING EFFECT FOR STATUS ==========
+    const statusText = document.querySelector('.status-text');
+    if (statusText) {
+        const states = ['Connected', 'Secure', 'Protected'];
+        let stateIndex = 0;
+
+        setInterval(function () {
+            stateIndex = (stateIndex + 1) % states.length;
+            statusText.style.opacity = '0';
+
+            setTimeout(function () {
+                statusText.textContent = states[stateIndex];
+                statusText.style.opacity = '1';
+            }, 300);
         }, 3000);
-    });
-}
+    }
 
-// ========== SMOOTH SCROLL POLYFILL (for older browsers) ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
 });
-
-// ========== PHONE MOCKUP CONNECTION ANIMATION ==========
-const vpnCircle = document.querySelector('.vpn-circle-inner');
-if (vpnCircle) {
-    setInterval(() => {
-        vpnCircle.style.transform = 'scale(1.05)';
-        setTimeout(() => {
-            vpnCircle.style.transform = 'scale(1)';
-        }, 500);
-    }, 3000);
-}
-
-console.log('✅ Let Connect VPN website loaded successfully!');
