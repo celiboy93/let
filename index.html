@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let Connect VPN - Secure & Fast VPN</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Let Connect VPN - Fast & Secure VPN for Asia</title>
+    <meta name="description" content="Let Connect VPN - Asia ရဲ့ အကောင်းဆုံး VPN ဝန်ဆောင်မှု။ One click ချိတ်ဆက်၊ Split Tunneling၊ Auto Select Best Server။">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">
+            <a href="#" class="nav-logo">
                 <i class="fas fa-shield-halved"></i>
-                <span>Let Connect <span class="accent">VPN</span></span>
+                <span>Let Connect <strong>VPN</strong></span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -26,403 +28,333 @@
                 <li><a href="#download">Download</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle">
-                <span></span><span></span><span></span>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </nav>
 
-    <!-- ========== HERO ========== -->
+    <!-- ========== HERO SECTION ========== -->
     <section class="hero" id="home">
-        <div class="hero-bg-animation">
-            <div class="floating-circle c1"></div>
-            <div class="floating-circle c2"></div>
-            <div class="floating-circle c3"></div>
-            <div class="floating-circle c4"></div>
-            <div class="grid-overlay"></div>
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
         </div>
-        <div class="container hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-bolt"></i> Asia's Fastest VPN Network
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i> Asia's Fastest VPN Service
+                </div>
+                <h1>အင်တာနက်ကို <span class="gradient-text">လုံခြုံစွာ</span> အသုံးပြုပါ</h1>
+                <p class="hero-desc">
+                    Let Connect VPN နဲ့ သင့်ဒေတာကို ကာကွယ်ပါ။ Asia နိုင်ငံ အတော်တော်များများရဲ့ server များနဲ့
+                    One Click ချိတ်ဆက်နိုင်ပြီး Split Tunneling, Battery Optimization နဲ့ Auto Select Best Server
+                    features များပါဝင်ပါတယ်။
+                </p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary btn-lg">
+                        <i class="fas fa-download"></i> APK Download
+                    </a>
+                    <a href="#pricing" class="btn btn-outline btn-lg">
+                        <i class="fas fa-crown"></i> VIP ရယူမယ်
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="50">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Servers</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="15">0</span><span class="stat-suffix">+</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span><span class="stat-suffix">K+</span>
+                        <span class="stat-label">Users</span>
+                    </div>
+                </div>
             </div>
-            <h1>
-                <span class="hero-line">Secure.</span>
-                <span class="hero-line">Fast.</span>
-                <span class="hero-line gradient-text">Unlimited.</span>
-            </h1>
-            <p class="hero-desc">
-                Asia နိုင်ငံများစွာမှ server များဖြင့် လျင်မြန်စွာ ချိတ်ဆက်နိုင်ပါသည်။
-                One-click ဖြင့် သင့်အင်တာနက်ကို လုံခြုံအောင် ကာကွယ်ပေးပါသည်။
-            </p>
-            <div class="hero-buttons">
-                <a href="#download" class="btn btn-primary btn-lg">
-                    <i class="fas fa-download"></i> Download APK
-                </a>
-                <a href="#features" class="btn btn-outline btn-lg">
-                    <i class="fas fa-play"></i> Learn More
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-plus">+</div>
-                    <div class="stat-label">Servers</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="15">0</div>
-                    <div class="stat-plus">+</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="100">0</div>
-                    <div class="stat-plus">K+</div>
-                    <div class="stat-label">Users</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="99">0</div>
-                    <div class="stat-plus">%</div>
-                    <div class="stat-label">Uptime</div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="vpn-ui">
+                            <div class="vpn-status connected">
+                                <div class="status-ring">
+                                    <div class="status-ring-inner">
+                                        <i class="fas fa-power-off"></i>
+                                    </div>
+                                </div>
+                                <span class="status-text">Connected</span>
+                            </div>
+                            <div class="vpn-server-info">
+                                <span class="flag-icon">🇸🇬</span>
+                                <span>Singapore #1</span>
+                                <span class="ping">12ms</span>
+                            </div>
+                            <div class="vpn-speed">
+                                <div class="speed-item">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>85.2 Mbps</span>
+                                </div>
+                                <div class="speed-item">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>42.8 Mbps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <div class="mouse">
-                <div class="mouse-wheel"></div>
-            </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,80 1440,60 L1440,120 L0,120 Z" fill="#ffffff"/>
+            </svg>
         </div>
     </section>
 
-    <!-- ========== FEATURES ========== -->
+    <!-- ========== FEATURES SECTION ========== -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">FEATURES</span>
-                <h2>ထူးခြားတဲ့ <span class="gradient-text">Features များ</span></h2>
-                <p>သင့်အတွက် အကောင်းဆုံး VPN အတွေ့အကြုံကို ပေးစွမ်းပါသည်</p>
+                <span class="section-badge"><i class="fas fa-star"></i> Features</span>
+                <h2>ထူးခြားတဲ့ Features များ</h2>
+                <p>Let Connect VPN ရဲ့ အဓိက ထူးခြားချက်များ</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card" data-aos="fade-up">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
                         <i class="fas fa-hand-pointer"></i>
                     </div>
                     <h3>One Click Connect</h3>
-                    <p>ခလုတ်တစ်ချက်နှိပ်ရုံဖြင့် ချက်ချင်းချိတ်ဆက်နိုင်ပါသည်။ ရှုပ်ထွေးသော setting များ လုပ်စရာမလိုပါ။</p>
+                    <p>ခလုတ်တစ်ချက်နှိပ်ရုံနဲ့ VPN ချိတ်ဆက်နိုင်ပါတယ်။ ရှုပ်ထွေးတဲ့ setting တွေ မလိုပါဘူး။</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-delay="100">
-                    <div class="feature-icon">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
                         <i class="fas fa-route"></i>
                     </div>
                     <h3>Split Tunneling</h3>
-                    <p>မည်သည့် app များကို VPN မှတဆင့်သွားမည်ကို ရွေးချယ်နိုင်ပါသည်။ သင့် bandwidth ကို ထိရောက်စွာ စီမံပါ။</p>
+                    <p>ဘယ် App တွေကို VPN သုံးမယ်၊ ဘယ် App တွေကို မသုံးဘူးဆိုတာ ရွေးချယ်နိုင်ပါတယ်။</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-delay="200">
-                    <div class="feature-icon">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
                         <i class="fas fa-battery-full"></i>
                     </div>
                     <h3>Battery Optimization</h3>
-                    <p>Battery ကို အနည်းဆုံးသာ သုံးစွဲပြီး ကြာရှည်ချိတ်ဆက်ထားနိုင်ပါသည်။ Smart power management ဖြင့် ဘက်ထရီ သက်သာပါသည်။</p>
+                    <p>ဘက်ထရီ အသုံးပြုမှုကို အနည်းဆုံးဖြစ်အောင် optimize လုပ်ထားပါတယ်။</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-delay="300">
-                    <div class="feature-icon">
-                        <i class="fas fa-wand-magic-sparkles"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                        <i class="fas fa-server"></i>
                     </div>
-                    <h3>Auto Best Server</h3>
-                    <p>အကောင်းဆုံး server ကို အလိုအလျောက် ရွေးချယ်ပေးပါသည်။ အမြဲတမ်း အမြန်ဆုံး connection ရရှိပါမည်။</p>
+                    <h3>Auto Select Best Server</h3>
+                    <p>သင့်တည်နေရာအရ အမြန်ဆုံး server ကို အလိုအလျောက် ရွေးချယ်ပေးပါတယ်။</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-delay="400">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-halved"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                        <i class="fas fa-earth-asia"></i>
                     </div>
-                    <h3>Military-Grade Encryption</h3>
-                    <p>AES-256 encryption ဖြင့် သင့်data ကို အပြည့်အဝ ကာကွယ်ပေးပါသည်။ Hacker များ ဝင်ရောက်၍ မရနိုင်ပါ။</p>
+                    <h3>Asia Wide Coverage</h3>
+                    <p>Asia နိုင်ငံ အတော်တော်များများမှ server များ ပါဝင်ပါတယ်။</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-delay="500">
-                    <div class="feature-icon">
-                        <i class="fas fa-ban"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
+                        <i class="fas fa-lock"></i>
                     </div>
-                    <h3>No Ads (Free Plan)</h3>
-                    <p>ကြော်ငြာ ကြည့်စရာမလိုပါ။ Free plan တွင်လည်း ကြော်ငြာကင်းစင်စွာ အသုံးပြုနိုင်ပါသည်။</p>
+                    <h3>Secure & Private</h3>
+                    <p>သင့်ဒေတာကို ခိုင်မာတဲ့ encryption နဲ့ ကာကွယ်ပေးပါတယ်။ Log မသိမ်းပါ။</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== HOW IT WORKS ========== -->
-    <section class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">HOW IT WORKS</span>
-                <h2>အသုံးပြုပုံ <span class="gradient-text">အဆင့် ၃ ဆင့်</span></h2>
-            </div>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <div class="step-icon"><i class="fas fa-download"></i></div>
-                    <h3>Download</h3>
-                    <p>APK ဖိုင်ကို ဒေါင်းလုဒ်ဆွဲပါ</p>
-                </div>
-                <div class="step-connector">
-                    <div class="connector-line"></div>
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <div class="step-icon"><i class="fas fa-mobile-screen"></i></div>
-                    <h3>Install</h3>
-                    <p>Install လုပ်ပြီး ဖွင့်ပါ</p>
-                </div>
-                <div class="step-connector">
-                    <div class="connector-line"></div>
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <div class="step-icon"><i class="fas fa-plug-circle-check"></i></div>
-                    <h3>Connect</h3>
-                    <p>One-click ဖြင့် ချိတ်ဆက်ပါ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== SERVERS ========== -->
+    <!-- ========== SERVERS SECTION ========== -->
     <section class="servers" id="servers">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">SERVERS</span>
-                <h2>Server <span class="gradient-text">Locations</span></h2>
-                <p>Asia နိုင်ငံများစွာတွင် server များ ရှိပါသည်</p>
+                <span class="section-badge"><i class="fas fa-globe"></i> Servers</span>
+                <h2>Server တည်နေရာများ</h2>
+                <p>ကမ္ဘာတစ်ဝန်းမှ မြန်ဆန်တဲ့ server များ</p>
             </div>
-
-            <div class="server-tabs">
-                <button class="server-tab active" data-tab="free">
-                    <i class="fas fa-unlock"></i> Free Servers
-                </button>
-                <button class="server-tab" data-tab="vip">
-                    <i class="fas fa-crown"></i> VIP Servers
-                </button>
-            </div>
-
-            <div class="server-content active" id="tab-free">
-                <div class="server-grid">
-                    <div class="server-card free-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/sg.png" alt="Singapore">
+            <div class="server-types">
+                <div class="server-type-card free-servers">
+                    <div class="server-type-header">
+                        <div class="type-icon free">
+                            <i class="fas fa-gift"></i>
                         </div>
-                        <div class="server-info">
-                            <h4>Singapore</h4>
-                            <span class="server-type free">FREE</span>
+                        <h3>Free Servers</h3>
+                        <span class="type-badge free-badge">အခမဲ့</span>
+                    </div>
+                    <p class="server-type-desc">ကြေညာ ကြည့်စရာမလိုပါ။ ၁ နာရီ ချိတ်ဆက်ခွင့်ရပါတယ်။ ၁ နာရီပြည့်ရင် auto ပြုတ်ပြီး ပြန်ချိတ်ပေးပါတယ်။</p>
+                    <div class="server-list">
+                        <div class="server-item">
+                            <span class="server-flag">🇸🇬</span>
+                            <span class="server-name">Singapore</span>
+                            <span class="server-status online"></span>
                         </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
+                        <div class="server-item">
+                            <span class="server-flag">🇺🇸</span>
+                            <span class="server-name">USA</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇮🇳</span>
+                            <span class="server-name">India</span>
+                            <span class="server-status online"></span>
                         </div>
                     </div>
-                    <div class="server-card free-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/us.png" alt="USA">
-                        </div>
-                        <div class="server-info">
-                            <h4>United States</h4>
-                            <span class="server-type free">FREE</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card free-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/in.png" alt="India">
-                        </div>
-                        <div class="server-info">
-                            <h4>India</h4>
-                            <span class="server-type free">FREE</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
+                    <div class="server-note">
+                        <i class="fas fa-info-circle"></i>
+                        <span>ကြေညာကြည့်စရာ မလိုပါ။ ၁နာရီပြည့်ရင် auto reconnect ပေးပါတယ်။</span>
                     </div>
                 </div>
-                <div class="free-notice">
-                    <i class="fas fa-info-circle"></i>
-                    <p>Free plan တွင် <strong>၁ နာရီ</strong> ချိတ်ဆက်ခွင့်ရှိပြီး၊ ပြတ်သွားပါက အလိုအလျောက် ပြန်ချိတ်ပေးပါသည်။ ကြော်ငြာကြည့်စရာ မလိုပါ။</p>
-                </div>
-            </div>
-
-            <div class="server-content" id="tab-vip">
-                <div class="server-grid">
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/sg.png" alt="Singapore">
+                <div class="server-type-card vip-servers">
+                    <div class="popular-ribbon">Popular</div>
+                    <div class="server-type-header">
+                        <div class="type-icon vip">
+                            <i class="fas fa-crown"></i>
                         </div>
-                        <div class="server-info">
-                            <h4>Singapore</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        <h3>VIP Servers</h3>
+                        <span class="type-badge vip-badge">Premium</span>
+                    </div>
+                    <p class="server-type-desc">တစ်ကြိမ်ချိတ်ဆက်ထားရင် မဖြုတ်မချင်း ရပါတယ်။ Unlimited connection time!</p>
+                    <div class="server-list">
+                        <div class="server-item">
+                            <span class="server-flag">🇸🇬</span>
+                            <span class="server-name">Singapore (Premium)</span>
+                            <span class="server-status online"></span>
                         </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
+                        <div class="server-item">
+                            <span class="server-flag">🇺🇸</span>
+                            <span class="server-name">USA (Premium)</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇮🇳</span>
+                            <span class="server-name">India (Premium)</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇯🇵</span>
+                            <span class="server-name">Japan</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇰🇷</span>
+                            <span class="server-name">South Korea</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇭🇰</span>
+                            <span class="server-name">Hong Kong</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇹🇭</span>
+                            <span class="server-name">Thailand</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇩🇪</span>
+                            <span class="server-name">Germany</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item">
+                            <span class="server-flag">🇬🇧</span>
+                            <span class="server-name">United Kingdom</span>
+                            <span class="server-status online"></span>
+                        </div>
+                        <div class="server-item more-servers">
+                            <span class="server-flag"><i class="fas fa-plus-circle"></i></span>
+                            <span class="server-name">နောက်ထပ် server များ...</span>
                         </div>
                     </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/us.png" alt="USA">
-                        </div>
-                        <div class="server-info">
-                            <h4>United States</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
+                    <div class="server-note vip-note">
+                        <i class="fas fa-infinity"></i>
+                        <span>Unlimited connection time - မဖြုတ်မချင်း ရပါတယ်!</span>
                     </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/in.png" alt="India">
-                        </div>
-                        <div class="server-info">
-                            <h4>India</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/jp.png" alt="Japan">
-                        </div>
-                        <div class="server-info">
-                            <h4>Japan</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/kr.png" alt="South Korea">
-                        </div>
-                        <div class="server-info">
-                            <h4>South Korea</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/hk.png" alt="Hong Kong">
-                        </div>
-                        <div class="server-info">
-                            <h4>Hong Kong</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/th.png" alt="Thailand">
-                        </div>
-                        <div class="server-info">
-                            <h4>Thailand</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/tw.png" alt="Taiwan">
-                        </div>
-                        <div class="server-info">
-                            <h4>Taiwan</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                    <div class="server-card vip-server">
-                        <div class="server-flag">
-                            <img src="https://flagcdn.com/w80/ph.png" alt="Philippines">
-                        </div>
-                        <div class="server-info">
-                            <h4>Philippines</h4>
-                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
-                        </div>
-                        <div class="server-status online">
-                            <span class="status-dot"></span> Online
-                        </div>
-                    </div>
-                </div>
-                <div class="vip-notice">
-                    <i class="fas fa-crown"></i>
-                    <p>VIP plan တွင် <strong>အကန့်အသတ်မရှိ</strong> ချိတ်ဆက်နိုင်ပြီး မဖြုတ်မချင်း connection ရှိနေမည်ဖြစ်ပါသည်။</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== COMPARISON ========== -->
-    <section class="comparison">
+    <!-- ========== COMPARISON SECTION ========== -->
+    <section class="comparison" id="comparison">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">COMPARE</span>
-                <h2>Free vs <span class="gradient-text">VIP</span></h2>
+                <span class="section-badge"><i class="fas fa-scale-balanced"></i> Compare</span>
+                <h2>Free vs VIP နှိုင်းယှဥ်ချက်</h2>
+                <p>သင့်အတွက် အသင့်တော်ဆုံးကို ရွေးချယ်ပါ</p>
             </div>
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Feature</th>
-                            <th>Free</th>
-                            <th class="vip-col"><i class="fas fa-crown"></i> VIP</th>
+                            <th>Features</th>
+                            <th>
+                                <div class="plan-header free">
+                                    <i class="fas fa-gift"></i>
+                                    <span>Free</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="plan-header vip">
+                                    <i class="fas fa-crown"></i>
+                                    <span>VIP</span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Servers</td>
-                            <td>Singapore, USA, India</td>
-                            <td class="vip-col">All Servers (9+ Countries)</td>
+                            <td>Server အရေအတွက်</td>
+                            <td>3 Servers</td>
+                            <td><strong>All Servers</strong></td>
                         </tr>
                         <tr>
-                            <td>Connection Time</td>
-                            <td>၁ နာရီ (Auto Reconnect)</td>
-                            <td class="vip-col">Unlimited</td>
+                            <td>ချိတ်ဆက်ချိန်</td>
+                            <td>၁ နာရီ</td>
+                            <td><strong>Unlimited</strong></td>
                         </tr>
                         <tr>
-                            <td>Ads</td>
-                            <td><i class="fas fa-xmark red"></i> No Ads</td>
-                            <td class="vip-col"><i class="fas fa-xmark red"></i> No Ads</td>
+                            <td>ကြေညာကြည့်ရန်</td>
+                            <td><i class="fas fa-xmark red"></i> မလိုပါ</td>
+                            <td><i class="fas fa-xmark red"></i> မလိုပါ</td>
                         </tr>
                         <tr>
-                            <td>One Click Connect</td>
+                            <td>Auto Reconnect</td>
                             <td><i class="fas fa-check green"></i></td>
-                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                            <td><i class="fas fa-check green"></i></td>
                         </tr>
                         <tr>
                             <td>Split Tunneling</td>
                             <td><i class="fas fa-check green"></i></td>
-                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                            <td><i class="fas fa-check green"></i></td>
                         </tr>
                         <tr>
                             <td>Battery Optimization</td>
                             <td><i class="fas fa-check green"></i></td>
-                            <td class="vip-col"><i class="fas fa-check green"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Auto Best Server</td>
                             <td><i class="fas fa-check green"></i></td>
-                            <td class="vip-col"><i class="fas fa-check green"></i></td>
                         </tr>
                         <tr>
-                            <td>Priority Speed</td>
+                            <td>Auto Select Best Server</td>
+                            <td><i class="fas fa-check green"></i></td>
+                            <td><i class="fas fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Premium Speed</td>
                             <td><i class="fas fa-xmark red"></i></td>
-                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                            <td><i class="fas fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Lugyi APK VIP Gift</td>
+                            <td><i class="fas fa-xmark red"></i></td>
+                            <td><i class="fas fa-check green"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -430,165 +362,277 @@
         </div>
     </section>
 
-    <!-- ========== PRICING ========== -->
+    <!-- ========== PRICING SECTION ========== -->
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">PRICING</span>
-                <h2>Premium <span class="gradient-text">Plans</span></h2>
-                <p>သင့်အတွက် သင့်တော်သော plan ကို ရွေးချယ်ပါ</p>
+                <span class="section-badge"><i class="fas fa-tags"></i> Pricing</span>
+                <h2>VIP ဈေးနှုန်းများ</h2>
+                <p>သင့်လိုအပ်ချက်နဲ့ အကိုက်ညီဆုံး plan ကို ရွေးချယ်ပါ</p>
             </div>
             <div class="pricing-grid">
                 <!-- 1 Month -->
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <span class="pricing-duration">1 Month</span>
-                        <div class="pricing-amount">
+                        <div class="pricing-duration">1 လ</div>
+                        <div class="pricing-price">
                             <span class="currency">MMK</span>
-                            <span class="price">2,000</span>
+                            <span class="amount">2,000</span>
+                            <span class="period">/month</span>
                         </div>
-                        <span class="pricing-per">/ month</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> All VIP Servers</li>
-                        <li><i class="fas fa-check"></i> Unlimited Connection</li>
-                        <li><i class="fas fa-check"></i> No Ads</li>
-                        <li><i class="fas fa-check"></i> Priority Speed</li>
-                        <li><i class="fas fa-check"></i> Split Tunneling</li>
-                        <li class="bonus"><i class="fas fa-gift"></i> Bonus: Lugyi APK VIP 7 Days</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> All VIP Servers Access</li>
+                            <li><i class="fas fa-check-circle"></i> Unlimited Connection Time</li>
+                            <li><i class="fas fa-check-circle"></i> Premium Speed</li>
+                            <li><i class="fas fa-check-circle"></i> Split Tunneling</li>
+                            <li class="bonus-feature">
+                                <i class="fas fa-gift"></i>
+                                <span>Lugyi APK VIP <strong>၇ ရက်</strong> လက်ဆောင်</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline btn-block">ဝယ်ယူမယ်</a>
+                    </div>
                 </div>
-
                 <!-- 3 Months -->
-                <div class="pricing-card popular">
-                    <div class="popular-badge">POPULAR</div>
+                <div class="pricing-card featured">
+                    <div class="pricing-popular">လူကြိုက်အများဆုံး</div>
                     <div class="pricing-header">
-                        <span class="pricing-duration">3 Months</span>
-                        <div class="pricing-amount">
+                        <div class="pricing-duration">3 လ</div>
+                        <div class="pricing-price">
                             <span class="currency">MMK</span>
-                            <span class="price">5,000</span>
+                            <span class="amount">5,000</span>
+                            <span class="period">/3 months</span>
                         </div>
-                        <span class="pricing-per">≈ 1,667/month</span>
+                        <div class="pricing-save">တစ်လကို ≈ 1,667 ကျပ်သာ</div>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> All VIP Servers</li>
-                        <li><i class="fas fa-check"></i> Unlimited Connection</li>
-                        <li><i class="fas fa-check"></i> No Ads</li>
-                        <li><i class="fas fa-check"></i> Priority Speed</li>
-                        <li><i class="fas fa-check"></i> Split Tunneling</li>
-                        <li class="bonus"><i class="fas fa-gift"></i> Bonus: Lugyi APK VIP 1 Month</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> All VIP Servers Access</li>
+                            <li><i class="fas fa-check-circle"></i> Unlimited Connection Time</li>
+                            <li><i class="fas fa-check-circle"></i> Premium Speed</li>
+                            <li><i class="fas fa-check-circle"></i> Split Tunneling</li>
+                            <li class="bonus-feature">
+                                <i class="fas fa-gift"></i>
+                                <span>Lugyi APK VIP <strong>၁ လ</strong> လက်ဆောင်</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary btn-block">ဝယ်ယူမယ်</a>
+                    </div>
                 </div>
-
                 <!-- 5 Months -->
-                <div class="pricing-card best-value">
-                    <div class="best-value-badge">BEST VALUE</div>
+                <div class="pricing-card">
                     <div class="pricing-header">
-                        <span class="pricing-duration">5 Months</span>
-                        <div class="pricing-amount">
+                        <div class="pricing-duration">5 လ</div>
+                        <div class="pricing-price">
                             <span class="currency">MMK</span>
-                            <span class="price">8,000</span>
+                            <span class="amount">8,000</span>
+                            <span class="period">/5 months</span>
                         </div>
-                        <span class="pricing-per">≈ 1,600/month</span>
+                        <div class="pricing-save">တစ်လကို ≈ 1,600 ကျပ်သာ</div>
                     </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> All VIP Servers</li>
-                        <li><i class="fas fa-check"></i> Unlimited Connection</li>
-                        <li><i class="fas fa-check"></i> No Ads</li>
-                        <li><i class="fas fa-check"></i> Priority Speed</li>
-                        <li><i class="fas fa-check"></i> Split Tunneling</li>
-                        <li class="bonus"><i class="fas fa-gift"></i> Bonus: Lugyi APK VIP 2 Months</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> All VIP Servers Access</li>
+                            <li><i class="fas fa-check-circle"></i> Unlimited Connection Time</li>
+                            <li><i class="fas fa-check-circle"></i> Premium Speed</li>
+                            <li><i class="fas fa-check-circle"></i> Split Tunneling</li>
+                            <li class="bonus-feature">
+                                <i class="fas fa-gift"></i>
+                                <span>Lugyi APK VIP <strong>၂ လ</strong> လက်ဆောင်</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline btn-block">ဝယ်ယူမယ်</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== DOWNLOAD ========== -->
+    <!-- ========== LUGYI BONUS SECTION ========== -->
+    <section class="bonus" id="bonus">
+        <div class="container">
+            <div class="bonus-card">
+                <div class="bonus-content">
+                    <div class="bonus-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="bonus-text">
+                        <h2>Lugyi APK VIP လက်ဆောင်</h2>
+                        <p>
+                            VIP plan ဝယ်ယူသူတိုင်း Lugyi APK VIP ကို လက်ဆောင်ရပါမယ်။
+                            Lugyi APK မှာ ဘောလုံးပွဲများ တိုက်ရိုက်ကြည့်ရှုနိုင်ပါတယ်။
+                        </p>
+                        <div class="bonus-tiers">
+                            <div class="bonus-tier">
+                                <span class="tier-plan">1 လ Plan</span>
+                                <span class="tier-arrow"><i class="fas fa-arrow-right"></i></span>
+                                <span class="tier-gift">Lugyi VIP 7 ရက်</span>
+                            </div>
+                            <div class="bonus-tier">
+                                <span class="tier-plan">3 လ Plan</span>
+                                <span class="tier-arrow"><i class="fas fa-arrow-right"></i></span>
+                                <span class="tier-gift">Lugyi VIP 1 လ</span>
+                            </div>
+                            <div class="bonus-tier">
+                                <span class="tier-plan">5 လ Plan</span>
+                                <span class="tier-arrow"><i class="fas fa-arrow-right"></i></span>
+                                <span class="tier-gift">Lugyi VIP 2 လ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DOWNLOAD SECTION ========== -->
     <section class="download" id="download">
         <div class="container">
-            <div class="download-wrapper">
-                <div class="download-content">
-                    <span class="section-badge">DOWNLOAD</span>
-                    <h2>Download <span class="gradient-text">Let Connect VPN</span></h2>
-                    <p>အခုပဲ ဒေါင်းလုဒ်ဆွဲပြီး လုံခြုံစွာ အင်တာနက်သုံးပါ</p>
-                    <div class="download-buttons">
-                        <a href="#" class="btn btn-download" id="downloadBtn">
-                            <i class="fab fa-android"></i>
-                            <div>
-                                <small>Download</small>
-                                <strong>Android APK</strong>
-                            </div>
-                        </a>
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-download"></i> Download</span>
+                <h2>APK Download</h2>
+                <p>Let Connect VPN ကို အခုပဲ download လုပ်ပါ</p>
+            </div>
+            <div class="download-cards">
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-shield-halved"></i>
                     </div>
+                    <h3>Let Connect VPN</h3>
+                    <p>VPN APK ကို download ဆွဲပြီး install လုပ်ပါ</p>
                     <div class="download-info">
-                        <div class="info-item">
-                            <i class="fas fa-file-arrow-down"></i>
-                            <span>APK Size: ~15MB</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-mobile-screen"></i>
-                            <span>Android 6.0+</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-code-branch"></i>
-                            <span>Latest Version</span>
-                        </div>
+                        <span><i class="fas fa-android"></i> Android</span>
+                        <span><i class="fas fa-file-zipper"></i> ~15 MB</span>
                     </div>
+                    <a href="#" class="btn btn-primary btn-block download-btn" id="vpnDownloadBtn">
+                        <i class="fas fa-download"></i> VPN APK Download
+                    </a>
                 </div>
-                <div class="download-visual">
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="vpn-ui">
-                                <div class="vpn-status connected">CONNECTED</div>
-                                <div class="vpn-circle">
-                                    <div class="vpn-circle-inner">
-                                        <i class="fas fa-shield-halved"></i>
-                                    </div>
-                                </div>
-                                <div class="vpn-server">
-                                    <img src="https://flagcdn.com/w40/sg.png" alt="SG">
-                                    <span>Singapore</span>
-                                </div>
-                                <div class="vpn-speed">
-                                    <div><i class="fas fa-arrow-down"></i> 85 Mbps</div>
-                                    <div><i class="fas fa-arrow-up"></i> 42 Mbps</div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="download-card">
+                    <div class="download-icon lugyi">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3>Lugyi APK</h3>
+                    <p>ဘောလုံးပွဲတိုက်ရိုက်ကြည့်ရှုနိုင်တဲ့ Lugyi APK</p>
+                    <div class="download-info">
+                        <span><i class="fas fa-android"></i> Android</span>
+                        <span><i class="fas fa-file-zipper"></i> ~20 MB</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-block download-btn" id="lugyiDownloadBtn">
+                        <i class="fas fa-download"></i> Lugyi APK Download
+                    </a>
+                </div>
+            </div>
+            <div class="download-instructions">
+                <h4><i class="fas fa-circle-info"></i> Install လုပ်နည်း</h4>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p>APK ကို Download လုပ်ပါ</p>
+                    </div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p>Settings > Unknown Sources ဖွင့်ပါ</p>
+                    </div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p>APK ကို Install လုပ်ပါ</p>
+                    </div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <p>App ဖွင့်ပြီး Connect နှိပ်ပါ</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== CONTACT ========== -->
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-circle-question"></i> FAQ</span>
+                <h2>မေးလေ့ရှိသော မေးခွန်းများ</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Free version မှာ ကြေညာကြည့်ရသလား?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>မလိုပါဘူး။ Free version မှာ ကြေညာကြည့်စရာ မလိုပါဘူး။ ၁ နာရီ ချိတ်ဆက်ခွင့်ရပြီး ၁ နာရီပြည့်ရင် auto ပြုတ်ပြီး ပြန်ချိတ်ပေးပါတယ်။ ပြန်သုံးရင်လည်း ကြေညာကြည့်စရာ မလိုပါဘူး။</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>VIP နဲ့ Free ဘာကွာလဲ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Free version မှာ Singapore, USA, India ဆာဗာ ၃ ခုသုံးလို့ရပြီး ၁ နာရီ ချိတ်ဆက်ခွင့်ရပါတယ်။ VIP version မှာ server အားလုံးသုံးလို့ရပြီး unlimited connection time ရပါတယ်။ Lugyi APK VIP လည်း လက်ဆောင်ရပါတယ်။</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>VIP ဘယ်လိုဝယ်ရမလဲ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Admin ကို Viber (09688171999) သို့မဟုတ် Telegram (@iqowoq) ကနေ ဆက်သွယ်ပြီး ဝယ်ယူနိုင်ပါတယ်။</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Lugyi APK ဆိုတာ ဘာလဲ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Lugyi APK ကတော့ ဘောလုံးပွဲများ တိုက်ရိုက်ကြည့်ရှုနိုင်တဲ့ APK ဖြစ်ပါတယ်။ VIP plan ဝယ်ယူသူတိုင်း Lugyi APK VIP ကို လက်ဆောင်ရပါမယ်။</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>ဘယ်နိုင်ငံတွေရဲ့ server တွေ ပါလဲ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Asia နိုင်ငံ အတော်တော်များများ ပါဝင်ပါတယ်။ Singapore, USA, India, Japan, South Korea, Hong Kong, Thailand, Germany, UK အပြင် နောက်ထပ် server များလည်း ထပ်တိုးနေပါတယ်။</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">CONTACT</span>
-                <h2>Admin ကို <span class="gradient-text">ဆက်သွယ်ရန်</span></h2>
-                <p>Premium plan ဝယ်ယူလိုပါက အောက်ပါ channel များမှ ဆက်သွယ်ပါ</p>
+                <span class="section-badge"><i class="fas fa-headset"></i> Contact</span>
+                <h2>Admin ဆက်သွယ်ရန်</h2>
+                <p>VIP ဝယ်ယူရန် (သို့) အကူအညီ လိုအပ်ပါက ဆက်သွယ်ပါ</p>
             </div>
-            <div class="contact-grid">
-                <a href="viber://chat?number=09688171999" class="contact-card viber" target="_blank">
-                    <div class="contact-icon">
+            <div class="contact-cards">
+                <a href="viber://chat?number=09688171999" class="contact-card viber-card" target="_blank">
+                    <div class="contact-icon viber">
                         <i class="fab fa-viber"></i>
                     </div>
                     <h3>Viber</h3>
-                    <p>09688171999</p>
+                    <p class="contact-detail">09688171999</p>
                     <span class="contact-action">Chat Now <i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="https://t.me/iqowoq" class="contact-card telegram" target="_blank">
-                    <div class="contact-icon">
+                <a href="https://t.me/iqowoq" class="contact-card telegram-card" target="_blank">
+                    <div class="contact-icon telegram">
                         <i class="fab fa-telegram"></i>
                     </div>
                     <h3>Telegram</h3>
-                    <p>@iqowoq</p>
-                    <span class="contact-action">Message <i class="fas fa-arrow-right"></i></span>
+                    <p class="contact-detail">@iqowoq</p>
+                    <span class="contact-action">Message Now <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
@@ -597,36 +641,46 @@
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
                         <i class="fas fa-shield-halved"></i>
-                        <span>Let Connect <span class="accent">VPN</span></span>
+                        <span>Let Connect <strong>VPN</strong></span>
                     </a>
-                    <p>Secure, Fast & Reliable VPN for everyone in Asia.</p>
+                    <p>Asia ရဲ့ အကောင်းဆုံး VPN ဝန်ဆောင်မှု။ သင့်ဒေတာကို လုံခြုံစွာ ကာကွယ်ပေးပါတယ်။</p>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links-group">
                     <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#features">Features</a>
-                    <a href="#servers">Servers</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#download">Download</a>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#servers">Servers</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <a href="viber://chat?number=09688171999"><i class="fab fa-viber"></i> 09688171999</a>
-                    <a href="https://t.me/iqowoq"><i class="fab fa-telegram"></i> @iqowoq</a>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="viber://chat?number=09688171999"><i class="fab fa-viber"></i> 09688171999</a></li>
+                        <li><a href="https://t.me/iqowoq"><i class="fab fa-telegram"></i> @iqowoq</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Let Connect VPN. All Rights Reserved.</p>
+                <p>&copy; 2025 Let Connect VPN. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
