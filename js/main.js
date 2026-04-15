@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // ============================================
             // ⬇️ ဒီ URL ကို သင့် VPN APK link နဲ့ ပြောင်းပါ
             // ============================================
-            var vpnApkUrl = 'https://example.com/your-vpn-app.apk';
+            var vpnApkUrl = 'https://lugyiapplication.nanmoelay.ooguy.com/download/1776241619320_7982746a865f6be7.apk';
             window.open(vpnApkUrl, '_blank');
         });
     }
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // ============================================
             // ⬇️ ဒီ URL ကို သင့် Lugyi APK link နဲ့ ပြောင်းပါ
             // ============================================
-            var lugyiApkUrl = 'https://example.com/lugyi-app.apk';
+            var lugyiApkUrl = 'https://lugyiapplication.vercel.app/download';
             window.open(lugyiApkUrl, '_blank');
         });
     }
