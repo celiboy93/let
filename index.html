@@ -1,921 +1,635 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let Connect VPN | Secure, Fast, Easy</title>
-  <meta name="description" content="Let Connect VPN - Asia နိုင်ငံအများအပြား server များ၊ one click connect, split tunneling, battery optimization နှင့် auto best server selection ပါဝင်သော VPN service." />
-  <meta name="theme-color" content="#0b1220" />
-  <style>
-    :root {
-      --bg: #081120;
-      --bg-2: #0d1b2f;
-      --card: rgba(16, 28, 49, 0.85);
-      --card-2: rgba(10, 19, 34, 0.92);
-      --line: rgba(255,255,255,0.08);
-      --text: #eef4ff;
-      --muted: #a8b7d6;
-      --accent: #4da3ff;
-      --accent-2: #7b5cff;
-      --success: #3ddc97;
-      --warning: #ffc857;
-      --danger: #ff7a7a;
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-      --radius: 24px;
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Myanmar", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(77,163,255,.20), transparent 30%),
-        radial-gradient(circle at top right, rgba(123,92,255,.18), transparent 28%),
-        linear-gradient(180deg, #081120 0%, #09172a 40%, #07111f 100%);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 14, 26, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 10px 25px rgba(77,163,255,0.3);
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 16px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      box-shadow: 0 16px 34px rgba(77,163,255,0.28);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      border-color: rgba(255,255,255,0.08);
-    }
-    .btn-success {
-      background: linear-gradient(135deg, #1fbf75, #39d98a);
-      color: #081120;
-      box-shadow: 0 16px 34px rgba(57,217,138,0.22);
-    }
-
-    .hero {
-      padding: 72px 0 40px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(77,163,255,0.08);
-      border: 1px solid rgba(77,163,255,0.20);
-      color: #d6e7ff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(36px, 6vw, 68px);
-      line-height: 1.03;
-      margin: 0 0 18px;
-      letter-spacing: -1.4px;
-    }
-
-    .grad {
-      background: linear-gradient(135deg, #ffffff, #a7ccff 40%, #bca8ff 80%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: clamp(17px, 2vw, 19px);
-      max-width: 760px;
-      margin-bottom: 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .tag {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: #d9e6ff;
-      font-size: 14px;
-    }
-
-    .hero-card, .card {
-      background: linear-gradient(180deg, var(--card), var(--card-2));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-    }
-
-    .hero-card {
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -60px -60px auto;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(123,92,255,.35), transparent 68%);
-      filter: blur(10px);
-    }
-
-    .phone-shell {
-      position: relative;
-      width: min(100%, 380px);
-      margin: 0 auto;
-      padding: 18px;
-      border-radius: 34px;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 20px 40px rgba(0,0,0,0.35);
-    }
-
-    .screen {
-      background: linear-gradient(180deg, #0b1629 0%, #09111e 100%);
-      border-radius: 26px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.06);
-      min-height: 530px;
-    }
-
-    .screen-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 22px;
-    }
-
-    .server-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(77,163,255,0.12);
-      border: 1px solid rgba(77,163,255,0.16);
-      font-size: 13px;
-      color: #dbe9ff;
-    }
-
-    .power-ring {
-      width: 174px;
-      height: 174px;
-      border-radius: 999px;
-      margin: 38px auto 20px;
-      background:
-        radial-gradient(circle at center, rgba(77,163,255,.25) 0 25%, transparent 26%),
-        conic-gradient(from 30deg, var(--accent), var(--accent-2), var(--success), var(--accent));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 0 10px rgba(77,163,255,0.07), 0 20px 60px rgba(77,163,255,0.22);
-    }
-
-    .power-ring::after {
-      content: "Connect";
-      width: 128px;
-      height: 128px;
-      border-radius: 999px;
-      background: #0b1425;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .mini-card {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .mini-card strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
-
-    .section {
-      padding: 34px 0;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section h2 {
-      margin: 0;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -0.8px;
-    }
-
-    .section p.sub {
-      margin: 8px 0 0;
-      color: var(--muted);
-      max-width: 700px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .stat {
-      padding: 22px;
-    }
-
-    .stat b {
-      display: block;
-      font-size: 34px;
-      margin-bottom: 6px;
-      letter-spacing: -1px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .feature {
-      padding: 22px;
-    }
-
-    .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(77,163,255,.18), rgba(123,92,255,.22));
-      border: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 14px;
-      font-size: 22px;
-    }
-
-    .feature h3, .plan h3, .compare h3, .contact h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-    }
-
-    .feature p, .plan p, .compare p, .contact p, li {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .compare-grid,
-    .pricing-grid,
-    .bonus-grid,
-    .contact-grid,
-    .download-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .compare, .plan, .bonus, .contact, .download-box {
-      padding: 24px;
-    }
-
-    .plan.vip {
-      border-color: rgba(61,220,151,0.22);
-      box-shadow: 0 18px 60px rgba(61,220,151,0.10);
-    }
-
-    .plan-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .2px;
-    }
-
-    .badge.free { background: rgba(255,200,87,.13); color: #ffe3a0; border: 1px solid rgba(255,200,87,.20); }
-    .badge.vip { background: rgba(61,220,151,.13); color: #b9ffd7; border: 1px solid rgba(61,220,151,.24); }
-
-    ul.clean {
-      list-style: none;
-      padding: 0;
-      margin: 14px 0 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    ul.clean li {
-      position: relative;
-      padding-left: 24px;
-    }
-
-    ul.clean li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--success);
-      font-weight: 800;
-    }
-
-    .price {
-      font-size: 34px;
-      line-height: 1;
-      margin: 10px 0 6px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .muted-small {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .plan-list {
-      margin-top: 16px;
-    }
-
-    .highlight {
-      color: #dff3ff;
-      font-weight: 700;
-    }
-
-    .warning-box {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,200,87,0.09);
-      border: 1px solid rgba(255,200,87,0.15);
-      color: #ffe0a8;
-      font-size: 14px;
-    }
-
-    .cta {
-      padding: 34px 0 70px;
-    }
-
-    .cta-card {
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 22px 0 90px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .sticky-cta {
-      position: fixed;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      z-index: 60;
-      display: none;
-      gap: 12px;
-      background: rgba(6, 12, 22, 0.92);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(14px);
-      padding: 12px;
-      border-radius: 18px;
-      box-shadow: 0 18px 48px rgba(0,0,0,0.36);
-    }
-
-    .sticky-cta .btn { flex: 1; padding: 12px 14px; }
-
-    .small-note {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .cta-card,
-      .compare-grid,
-      .pricing-grid,
-      .bonus-grid,
-      .contact-grid,
-      .download-grid,
-      .features,
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .hero { padding-top: 44px; }
-      .nav-links { display: none; }
-      .sticky-cta { display: flex; }
-    }
-
-    @media (max-width: 620px) {
-      .container { width: min(var(--max), calc(100% - 20px)); }
-      .hero-card, .card, .compare, .plan, .bonus, .contact, .download-box { padding: 18px; }
-      .hero-actions .btn { width: 100%; }
-      .screen { min-height: 500px; }
-      .power-ring { width: 154px; height: 154px; }
-      .power-ring::after { width: 116px; height: 116px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let Connect VPN - Secure & Fast VPN</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="brand" aria-label="Let Connect VPN Home">
-        <div class="logo">LC</div>
-        <div>
-          <div>Let Connect</div>
-          <div style="font-size:12px;color:var(--muted);font-weight:600;">VPN Service</div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-halved"></i>
+                <span>Let Connect <span class="accent">VPN</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#servers">Servers</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-      </a>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#plans">Plans</a>
-        <a href="#bonus">Bonus</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="https://example.com/let-connect.apk" target="_blank" rel="noopener">APK Download</a>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">⚡ One Click Connect • 🌏 Asia Servers • 🔒 Secure Access</div>
-          <h1><span class="grad">Let Connect</span><br />မြန်၊ လုံခြုံ၊ သုံးရလွယ်တဲ့ VPN</h1>
-          <p class="lead">
-            Asia နိုင်ငံတော်တော်များများပါဝင်တဲ့ server များ၊ one click ချိတ်ဆက်နိုင်ခြင်း၊ split tunneling,
-            battery optimization နှင့် auto select best server စနစ်များပါဝင်တဲ့ modern VPN service ဖြစ်ပါတယ်။
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://example.com/let-connect.apk" target="_blank" rel="noopener">APK Download</a>
-            <a class="btn btn-secondary" href="#plans">Plan ကြည့်မယ်</a>
-            <a class="btn btn-secondary" href="https://t.me/iqowoq" target="_blank" rel="noopener">Telegram ဆက်သွယ်ရန်</a>
-          </div>
-
-          <div class="tag-row">
-            <div class="tag">✔ Ads ကြည့်စရာမလို</div>
-            <div class="tag">✔ Auto Best Server</div>
-            <div class="tag">✔ Battery Friendly</div>
-            <div class="tag">✔ Split Tunneling</div>
-          </div>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+        <div class="hero-bg-animation">
+            <div class="floating-circle c1"></div>
+            <div class="floating-circle c2"></div>
+            <div class="floating-circle c3"></div>
+            <div class="floating-circle c4"></div>
+            <div class="grid-overlay"></div>
         </div>
-
-        <div class="hero-card">
-          <div class="phone-shell">
-            <div class="screen">
-              <div class="screen-top">
-                <span>Let Connect VPN</span>
-                <span class="server-pill">Best Server • Singapore</span>
-              </div>
-              <div class="power-ring"></div>
-              <div style="text-align:center;color:var(--muted);margin-bottom:8px;">One click နဲ့ ချိတ်ဆက်နိုင်ပြီး network အလိုက် best route ကိုရွေးပေးနိုင်ပါတယ်</div>
-              <div class="mini-grid">
-                <div class="mini-card">
-                  <strong>Split Tunneling</strong>
-                  <span>လိုအပ်တဲ့ app တွေကိုသာ VPN ဖြတ်သန်းခွင့်ပေးနိုင်သည်</span>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i> Asia's Fastest VPN Network
+            </div>
+            <h1>
+                <span class="hero-line">Secure.</span>
+                <span class="hero-line">Fast.</span>
+                <span class="hero-line gradient-text">Unlimited.</span>
+            </h1>
+            <p class="hero-desc">
+                Asia နိုင်ငံများစွာမှ server များဖြင့် လျင်မြန်စွာ ချိတ်ဆက်နိုင်ပါသည်။
+                One-click ဖြင့် သင့်အင်တာနက်ကို လုံခြုံအောင် ကာကွယ်ပေးပါသည်။
+            </p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn btn-primary btn-lg">
+                    <i class="fas fa-download"></i> Download APK
+                </a>
+                <a href="#features" class="btn btn-outline btn-lg">
+                    <i class="fas fa-play"></i> Learn More
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-plus">+</div>
+                    <div class="stat-label">Servers</div>
                 </div>
-                <div class="mini-card">
-                  <strong>Battery Optimization</strong>
-                  <span>အသုံးပြုချိန်ရှည်စေရန် battery usage ကို optimize လုပ်ပေးသည်</span>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-plus">+</div>
+                    <div class="stat-label">Countries</div>
                 </div>
-                <div class="mini-card">
-                  <strong>Best Server</strong>
-                  <span>အမြန်ဆုံးနှင့် တည်ငြိမ်ဆုံး server ကို auto ရွေးပေးသည်</span>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-plus">K+</div>
+                    <div class="stat-label">Users</div>
                 </div>
-                <div class="mini-card">
-                  <strong>Asia Coverage</strong>
-                  <span>Asia နိုင်ငံအများအပြားပါဝင်သော server access</span>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="99">0</div>
+                    <div class="stat-plus">%</div>
+                    <div class="stat-label">Uptime</div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="hero-scroll-indicator">
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+        </div>
     </section>
 
-    <section class="section">
-      <div class="container stats">
-        <div class="card stat">
-          <b>Asia+</b>
-          <span>Asia နိုင်ငံတော်တော်များများ server options</span>
+    <!-- ========== FEATURES ========== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FEATURES</span>
+                <h2>ထူးခြားတဲ့ <span class="gradient-text">Features များ</span></h2>
+                <p>သင့်အတွက် အကောင်းဆုံး VPN အတွေ့အကြုံကို ပေးစွမ်းပါသည်</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-pointer"></i>
+                    </div>
+                    <h3>One Click Connect</h3>
+                    <p>ခလုတ်တစ်ချက်နှိပ်ရုံဖြင့် ချက်ချင်းချိတ်ဆက်နိုင်ပါသည်။ ရှုပ်ထွေးသော setting များ လုပ်စရာမလိုပါ။</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Split Tunneling</h3>
+                    <p>မည်သည့် app များကို VPN မှတဆင့်သွားမည်ကို ရွေးချယ်နိုင်ပါသည်။ သင့် bandwidth ကို ထိရောက်စွာ စီမံပါ။</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Battery Optimization</h3>
+                    <p>Battery ကို အနည်းဆုံးသာ သုံးစွဲပြီး ကြာရှည်ချိတ်ဆက်ထားနိုင်ပါသည်။ Smart power management ဖြင့် ဘက်ထရီ သက်သာပါသည်။</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>Auto Best Server</h3>
+                    <p>အကောင်းဆုံး server ကို အလိုအလျောက် ရွေးချယ်ပေးပါသည်။ အမြဲတမ်း အမြန်ဆုံး connection ရရှိပါမည်။</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3>Military-Grade Encryption</h3>
+                    <p>AES-256 encryption ဖြင့် သင့်data ကို အပြည့်အဝ ကာကွယ်ပေးပါသည်။ Hacker များ ဝင်ရောက်၍ မရနိုင်ပါ။</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3>No Ads (Free Plan)</h3>
+                    <p>ကြော်ငြာ ကြည့်စရာမလိုပါ။ Free plan တွင်လည်း ကြော်ငြာကင်းစင်စွာ အသုံးပြုနိုင်ပါသည်။</p>
+                </div>
+            </div>
         </div>
-        <div class="card stat">
-          <b>1 Click</b>
-          <span>တစ်ချက်နှိပ်ပြီး ချိတ်ဆက်နိုင်သော system</span>
-        </div>
-        <div class="card stat">
-          <b>No Ads</b>
-          <span>ကြေညာ ads ကြည့်စရာမလိုဘဲ အသုံးပြုနိုင်သည်</span>
-        </div>
-        <div class="card stat">
-          <b>VIP</b>
-          <span>အချိန်ကန့်သတ်မရှိ ချိတ်ဆက်ထားနိုင်သော plan</span>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>အသုံးဝင်တဲ့ Features များ</h2>
-            <p class="sub">နေ့စဉ်အသုံးပြုရာမှာ အဆင်ပြေစေဖို့ practical လုပ်ဆောင်ချက်များကို တစ်နေရာတည်းမှာ စုပေးထားပါတယ်။</p>
-          </div>
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">HOW IT WORKS</span>
+                <h2>အသုံးပြုပုံ <span class="gradient-text">အဆင့် ၃ ဆင့်</span></h2>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fas fa-download"></i></div>
+                    <h3>Download</h3>
+                    <p>APK ဖိုင်ကို ဒေါင်းလုဒ်ဆွဲပါ</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fas fa-mobile-screen"></i></div>
+                    <h3>Install</h3>
+                    <p>Install လုပ်ပြီး ဖွင့်ပါ</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fas fa-plug-circle-check"></i></div>
+                    <h3>Connect</h3>
+                    <p>One-click ဖြင့် ချိတ်ဆက်ပါ</p>
+                </div>
+            </div>
         </div>
-
-        <div class="features">
-          <div class="card feature">
-            <div class="icon">⚡</div>
-            <h3>One Click Connect</h3>
-            <p>တစ်ချက်နှိပ်ရုံနဲ့ အလွယ်တကူ server ချိတ်နိုင်ပြီး setup ခက်ခဲမှုမရှိပါ။</p>
-          </div>
-          <div class="card feature">
-            <div class="icon">🌐</div>
-            <h3>Asia Server Coverage</h3>
-            <p>Asia နိုင်ငံများစွာရှိ server များကို အသုံးပြုနိုင်ပြီး location အလိုက် ပိုမိုအဆင်ပြေစေပါတယ်။</p>
-          </div>
-          <div class="card feature">
-            <div class="icon">🛡️</div>
-            <h3>Secure & Private</h3>
-            <p>လုံခြုံမှုနဲ့ privacy ကို အလေးထားထားပြီး connection experience ကို ပိုမိုစိတ်ချရစေပါတယ်။</p>
-          </div>
-          <div class="card feature">
-            <div class="icon">🔀</div>
-            <h3>Split Tunneling</h3>
-            <p>VPN ဖြတ်ချင်တဲ့ app များကိုရွေးချယ်နိုင်ပြီး အခြား app များကို normal internet နဲ့ သုံးနိုင်ပါတယ်။</p>
-          </div>
-          <div class="card feature">
-            <div class="icon">🔋</div>
-            <h3>Battery Optimization</h3>
-            <p>Background usage ကို သင့်တော်အောင်ညှိပေးပြီး battery စားနှုန်းကို ပိုကောင်းအောင်ထိန်းပေးပါတယ်။</p>
-          </div>
-          <div class="card feature">
-            <div class="icon">🎯</div>
-            <h3>Auto Select Best Server</h3>
-            <p>Network အခြေအနေအပေါ်မူတည်ပြီး best server ကို auto ရွေးပေးနိုင်သော function ပါဝင်ပါတယ်။</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="plans">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Regular နဲ့ VIP Plan</h2>
-            <p class="sub">အသုံးပြုပုံအလိုက် ရိုးရိုး plan သို့မဟုတ် VIP plan ကို ရွေးချယ်နိုင်ပါတယ်။</p>
-          </div>
-        </div>
-
-        <div class="compare-grid">
-          <div class="card compare">
-            <div class="plan-header">
-              <h3>Regular Plan</h3>
-              <span class="badge free">FREE STYLE</span>
+    <!-- ========== SERVERS ========== -->
+    <section class="servers" id="servers">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">SERVERS</span>
+                <h2>Server <span class="gradient-text">Locations</span></h2>
+                <p>Asia နိုင်ငံများစွာတွင် server များ ရှိပါသည်</p>
             </div>
-            <p>လက်ရှိ <span class="highlight">Singapore, USA, India</span> server များကို အသုံးပြုနိုင်ပါတယ်။ Ads ကြည့်စရာမလိုပါ။</p>
-            <ul class="clean">
-              <li>Singapore / USA / India server အသုံးပြုနိုင်သည်</li>
-              <li>ကြေညာ ads ကြည့်စရာ မလိုပါ</li>
-              <li>တစ်ကြိမ်ချိတ်ဆက်ခွင့် <span class="highlight">၁ နာရီ</span></li>
-              <li>၁ နာရီပြည့်လျှင် auto disconnect ဖြစ်ပြီး ပြန်ချိတ်နိုင်သည်</li>
-              <li>ပြန်သုံးချင်လျှင် ads ပြန်မကြည့်ရ</li>
-            </ul>
-          </div>
 
-          <div class="card compare">
-            <div class="plan-header">
-              <h3>VIP Plan</h3>
-              <span class="badge vip">PREMIUM</span>
+            <div class="server-tabs">
+                <button class="server-tab active" data-tab="free">
+                    <i class="fas fa-unlock"></i> Free Servers
+                </button>
+                <button class="server-tab" data-tab="vip">
+                    <i class="fas fa-crown"></i> VIP Servers
+                </button>
             </div>
-            <p>VIP plan မှာ ချိတ်ထားပြီးနောက် မဖြုတ်မချင်း ဆက်လက်အသုံးပြုနိုင်ပြီး ပိုအဆင်ပြေပါတယ်။</p>
-            <ul class="clean">
-              <li>တစ်ခါချိတ်ထားလျှင် မဖြုတ်မချင်းအသုံးပြုနိုင်သည်</li>
-              <li>long session အသုံးပြုသူများအတွက် ပိုအဆင်ပြေသည်</li>
-              <li>Premium access နှင့် gift benefit များရရှိနိုင်သည်</li>
-              <li>Admin support ကို တိုက်ရိုက်ဆက်သွယ်နိုင်သည်</li>
-            </ul>
-          </div>
+
+            <div class="server-content active" id="tab-free">
+                <div class="server-grid">
+                    <div class="server-card free-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/sg.png" alt="Singapore">
+                        </div>
+                        <div class="server-info">
+                            <h4>Singapore</h4>
+                            <span class="server-type free">FREE</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card free-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/us.png" alt="USA">
+                        </div>
+                        <div class="server-info">
+                            <h4>United States</h4>
+                            <span class="server-type free">FREE</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card free-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/in.png" alt="India">
+                        </div>
+                        <div class="server-info">
+                            <h4>India</h4>
+                            <span class="server-type free">FREE</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                </div>
+                <div class="free-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Free plan တွင် <strong>၁ နာရီ</strong> ချိတ်ဆက်ခွင့်ရှိပြီး၊ ပြတ်သွားပါက အလိုအလျောက် ပြန်ချိတ်ပေးပါသည်။ ကြော်ငြာကြည့်စရာ မလိုပါ။</p>
+                </div>
+            </div>
+
+            <div class="server-content" id="tab-vip">
+                <div class="server-grid">
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/sg.png" alt="Singapore">
+                        </div>
+                        <div class="server-info">
+                            <h4>Singapore</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/us.png" alt="USA">
+                        </div>
+                        <div class="server-info">
+                            <h4>United States</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/in.png" alt="India">
+                        </div>
+                        <div class="server-info">
+                            <h4>India</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/jp.png" alt="Japan">
+                        </div>
+                        <div class="server-info">
+                            <h4>Japan</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/kr.png" alt="South Korea">
+                        </div>
+                        <div class="server-info">
+                            <h4>South Korea</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/hk.png" alt="Hong Kong">
+                        </div>
+                        <div class="server-info">
+                            <h4>Hong Kong</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/th.png" alt="Thailand">
+                        </div>
+                        <div class="server-info">
+                            <h4>Thailand</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/tw.png" alt="Taiwan">
+                        </div>
+                        <div class="server-info">
+                            <h4>Taiwan</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                    <div class="server-card vip-server">
+                        <div class="server-flag">
+                            <img src="https://flagcdn.com/w80/ph.png" alt="Philippines">
+                        </div>
+                        <div class="server-info">
+                            <h4>Philippines</h4>
+                            <span class="server-type vip"><i class="fas fa-crown"></i> VIP</span>
+                        </div>
+                        <div class="server-status online">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                </div>
+                <div class="vip-notice">
+                    <i class="fas fa-crown"></i>
+                    <p>VIP plan တွင် <strong>အကန့်အသတ်မရှိ</strong> ချိတ်ဆက်နိုင်ပြီး မဖြုတ်မချင်း connection ရှိနေမည်ဖြစ်ပါသည်။</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>VIP စျေးနှုန်းများ</h2>
-            <p class="sub">Premium access အတွက် လစဉ်/သုံးလ/ငါးလ plan များ ရွေးချယ်နိုင်ပါတယ်။</p>
-          </div>
+    <!-- ========== COMPARISON ========== -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">COMPARE</span>
+                <h2>Free vs <span class="gradient-text">VIP</span></h2>
+            </div>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Free</th>
+                            <th class="vip-col"><i class="fas fa-crown"></i> VIP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Servers</td>
+                            <td>Singapore, USA, India</td>
+                            <td class="vip-col">All Servers (9+ Countries)</td>
+                        </tr>
+                        <tr>
+                            <td>Connection Time</td>
+                            <td>၁ နာရီ (Auto Reconnect)</td>
+                            <td class="vip-col">Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Ads</td>
+                            <td><i class="fas fa-xmark red"></i> No Ads</td>
+                            <td class="vip-col"><i class="fas fa-xmark red"></i> No Ads</td>
+                        </tr>
+                        <tr>
+                            <td>One Click Connect</td>
+                            <td><i class="fas fa-check green"></i></td>
+                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Split Tunneling</td>
+                            <td><i class="fas fa-check green"></i></td>
+                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Battery Optimization</td>
+                            <td><i class="fas fa-check green"></i></td>
+                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Auto Best Server</td>
+                            <td><i class="fas fa-check green"></i></td>
+                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Priority Speed</td>
+                            <td><i class="fas fa-xmark red"></i></td>
+                            <td class="vip-col"><i class="fas fa-check green"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-        <div class="pricing-grid">
-          <div class="card plan vip">
-            <div class="plan-header">
-              <h3>Premium 1 လ</h3>
-              <span class="badge vip">MOST POPULAR</span>
-            </div>
-            <div class="price">၂၀၀၀ ကျပ်</div>
-            <div class="muted-small">VIP access + လက်ဆောင်ပါဝင်သည်</div>
-            <ul class="clean plan-list">
-              <li>VIP အသုံးပြုခွင့် ၁ လ</li>
-              <li>Lugyi Apk VIP <span class="highlight">၇ ရက်</span> လက်ဆောင်</li>
-              <li>မဖြုတ်မချင်း ဆက်လက်ချိတ်ဆက်နိုင်သည်</li>
-            </ul>
-          </div>
-
-          <div class="card plan vip">
-            <div class="plan-header">
-              <h3>Premium ၃ လ</h3>
-              <span class="badge vip">BEST VALUE</span>
-            </div>
-            <div class="price">၅၀၀၀ ကျပ်</div>
-            <div class="muted-small">ပိုတန်ပြီး gift ပိုများ</div>
-            <ul class="clean plan-list">
-              <li>VIP အသုံးပြုခွင့် ၃ လ</li>
-              <li>Lugyi Apk VIP <span class="highlight">၁ လ</span> လက်ဆောင်</li>
-              <li>တန်ဖိုးနဲ့အသုံးပြုချင်သူများအတွက် အကောင်းဆုံး</li>
-            </ul>
-          </div>
-
-          <div class="card plan vip">
-            <div class="plan-header">
-              <h3>Premium ၅ လ</h3>
-              <span class="badge vip">LONG TERM</span>
-            </div>
-            <div class="price">၈၀၀၀ ကျပ်</div>
-            <div class="muted-small">long term အသုံးပြုသူများအတွက်</div>
-            <ul class="clean plan-list">
-              <li>VIP အသုံးပြုခွင့် ၅ လ</li>
-              <li>Lugyi Apk VIP <span class="highlight">၂ လ</span> လက်ဆောင်</li>
-              <li>စျေးနှုန်းပိုတန်ပြီး gift benefit ပိုရသည်</li>
-            </ul>
-          </div>
-
-          <div class="card plan">
-            <div class="plan-header">
-              <h3>Important Note</h3>
-              <span class="badge free">NOTICE</span>
-            </div>
-            <p>VIP plan များတွင် Lugyi Apk VIP လက်ဆောင်ပါဝင်ပါတယ်။</p>
-            <div class="warning-box">
-              Lugyi Apk သည် ဘောလုံးပွဲများ တိုက်ရိုက်ကြည့်နိုင်ခြင်းအပြင် 21+ audience အတွက် content များပါဝင်နိုင်သော app ဖြစ်ပါသည်။ အသက်အရွယ်သင့်တော်သူများသာ အသုံးပြုသင့်ပါသည်။
-            </div>
-            <div class="small-note">လိုအပ်ပါက ဒီစာပိုဒ်ကို index.html ထဲမှ ဖြုတ် သို့မဟုတ် ပြင်နိုင်ပါတယ်။</div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="bonus">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Bonus Gifts</h2>
-            <p class="sub">VIP plan ဝယ်ယူသူများအတွက် Lugyi Apk VIP လက်ဆောင်များကို plan အလိုက် ပေးထားပါတယ်။</p>
-          </div>
-        </div>
-
-        <div class="bonus-grid">
-          <div class="card bonus">
-            <h3>၁ လ Premium ဝယ်ယူလျှင်</h3>
-            <p><span class="highlight">Lugyi Apk VIP ၇ ရက်</span> လက်ဆောင်ရရှိပါမည်။</p>
-          </div>
-          <div class="card bonus">
-            <h3>၃ လ Premium ဝယ်ယူလျှင်</h3>
-            <p><span class="highlight">Lugyi Apk VIP ၁ လ</span> လက်ဆောင်ရရှိပါမည်။</p>
-          </div>
-          <div class="card bonus">
-            <h3>၅ လ Premium ဝယ်ယူလျှင်</h3>
-            <p><span class="highlight">Lugyi Apk VIP ၂ လ</span> လက်ဆောင်ရရှိပါမည်။</p>
-          </div>
-          <div class="card bonus">
-            <h3>အသုံးပြုသူများအတွက်</h3>
-            <p>VPN + bonus gift အတူတကွရရှိနိုင်သော package ပုံစံဖြစ်လို့ တန်ဖိုးပိုရစေပါတယ်။</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Download & Setup</h2>
-            <p class="sub">APK download link ကို မိမိ link နဲ့ အလွယ်တကူပြောင်းနိုင်အောင် button နှစ်နေရာမှာ ထည့်ပေးထားပါတယ်။</p>
-          </div>
-        </div>
-
-        <div class="download-grid">
-          <div class="card download-box">
-            <h3>APK Download Link</h3>
-            <p>အောက်က button နှိပ်လို့ရပြီး၊ code ထဲမှာ <span class="highlight">https://example.com/let-connect.apk</span> ကို မင်းရဲ့ APK link နဲ့ပြောင်းပေးရုံပါပဲ။</p>
-            <div class="hero-actions" style="margin-top:16px;margin-bottom:0;">
-              <a class="btn btn-primary" href="https://example.com/let-connect.apk" target="_blank" rel="noopener">APK Download</a>
+    <!-- ========== PRICING ========== -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">PRICING</span>
+                <h2>Premium <span class="gradient-text">Plans</span></h2>
+                <p>သင့်အတွက် သင့်တော်သော plan ကို ရွေးချယ်ပါ</p>
             </div>
-          </div>
-          <div class="card download-box">
-            <h3>Vercel တင်နည်း</h3>
-            <p>ဒီ project က static HTML တစ်ဖိုင်တည်းနဲ့ run လုပ်နိုင်ပါတယ်။ <span class="highlight">index.html</span> ကို Vercel project ထဲတင်ပြီး deploy လုပ်ရုံပါ။</p>
-            <ul class="clean" style="margin-top:14px;">
-              <li>index.html ကို project root မှာထားပါ</li>
-              <li>Vercel သို့ import သို့မဟုတ် upload လုပ်ပါ</li>
-              <li>Deploy ပြီးရင် live website ဖြစ်သွားပါမယ်</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="pricing-grid">
+                <!-- 1 Month -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <span class="pricing-duration">1 Month</span>
+                        <div class="pricing-amount">
+                            <span class="currency">MMK</span>
+                            <span class="price">2,000</span>
+                        </div>
+                        <span class="pricing-per">/ month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All VIP Servers</li>
+                        <li><i class="fas fa-check"></i> Unlimited Connection</li>
+                        <li><i class="fas fa-check"></i> No Ads</li>
+                        <li><i class="fas fa-check"></i> Priority Speed</li>
+                        <li><i class="fas fa-check"></i> Split Tunneling</li>
+                        <li class="bonus"><i class="fas fa-gift"></i> Bonus: Lugyi APK VIP 7 Days</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                </div>
 
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Admin ကို ဆက်သွယ်ရန်</h2>
-            <p class="sub">Viber သို့မဟုတ် Telegram မှ တိုက်ရိုက်ဆက်သွယ်နိုင်ပါတယ်။</p>
-          </div>
-        </div>
+                <!-- 3 Months -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">POPULAR</div>
+                    <div class="pricing-header">
+                        <span class="pricing-duration">3 Months</span>
+                        <div class="pricing-amount">
+                            <span class="currency">MMK</span>
+                            <span class="price">5,000</span>
+                        </div>
+                        <span class="pricing-per">≈ 1,667/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All VIP Servers</li>
+                        <li><i class="fas fa-check"></i> Unlimited Connection</li>
+                        <li><i class="fas fa-check"></i> No Ads</li>
+                        <li><i class="fas fa-check"></i> Priority Speed</li>
+                        <li><i class="fas fa-check"></i> Split Tunneling</li>
+                        <li class="bonus"><i class="fas fa-gift"></i> Bonus: Lugyi APK VIP 1 Month</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                </div>
 
-        <div class="contact-grid">
-          <div class="card contact">
-            <h3>Viber</h3>
-            <p>ဖုန်းနံပါတ် - <span class="highlight">09688171999</span></p>
-            <div class="contact-links">
-              <a class="btn btn-success" href="viber://chat?number=%2B959688171999">Viber ဖြင့် ဆက်သွယ်ရန်</a>
-              <a class="btn btn-secondary" href="tel:09688171999">Call</a>
+                <!-- 5 Months -->
+                <div class="pricing-card best-value">
+                    <div class="best-value-badge">BEST VALUE</div>
+                    <div class="pricing-header">
+                        <span class="pricing-duration">5 Months</span>
+                        <div class="pricing-amount">
+                            <span class="currency">MMK</span>
+                            <span class="price">8,000</span>
+                        </div>
+                        <span class="pricing-per">≈ 1,600/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All VIP Servers</li>
+                        <li><i class="fas fa-check"></i> Unlimited Connection</li>
+                        <li><i class="fas fa-check"></i> No Ads</li>
+                        <li><i class="fas fa-check"></i> Priority Speed</li>
+                        <li><i class="fas fa-check"></i> Split Tunneling</li>
+                        <li class="bonus"><i class="fas fa-gift"></i> Bonus: Lugyi APK VIP 2 Months</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                </div>
             </div>
-          </div>
-          <div class="card contact">
-            <h3>Telegram</h3>
-            <p>Telegram username - <span class="highlight">@iqowoq</span></p>
-            <div class="contact-links">
-              <a class="btn btn-secondary" href="https://t.me/iqowoq" target="_blank" rel="noopener">Telegram သို့ သွားမယ်</a>
+        </div>
+    </section>
+
+    <!-- ========== DOWNLOAD ========== -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="download-wrapper">
+                <div class="download-content">
+                    <span class="section-badge">DOWNLOAD</span>
+                    <h2>Download <span class="gradient-text">Let Connect VPN</span></h2>
+                    <p>အခုပဲ ဒေါင်းလုဒ်ဆွဲပြီး လုံခြုံစွာ အင်တာနက်သုံးပါ</p>
+                    <div class="download-buttons">
+                        <a href="#" class="btn btn-download" id="downloadBtn">
+                            <i class="fab fa-android"></i>
+                            <div>
+                                <small>Download</small>
+                                <strong>Android APK</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="download-info">
+                        <div class="info-item">
+                            <i class="fas fa-file-arrow-down"></i>
+                            <span>APK Size: ~15MB</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-mobile-screen"></i>
+                            <span>Android 6.0+</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Latest Version</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="vpn-ui">
+                                <div class="vpn-status connected">CONNECTED</div>
+                                <div class="vpn-circle">
+                                    <div class="vpn-circle-inner">
+                                        <i class="fas fa-shield-halved"></i>
+                                    </div>
+                                </div>
+                                <div class="vpn-server">
+                                    <img src="https://flagcdn.com/w40/sg.png" alt="SG">
+                                    <span>Singapore</span>
+                                </div>
+                                <div class="vpn-speed">
+                                    <div><i class="fas fa-arrow-down"></i> 85 Mbps</div>
+                                    <div><i class="fas fa-arrow-up"></i> 42 Mbps</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <section class="cta">
-      <div class="container">
-        <div class="card cta-card">
-          <div>
-            <h2 style="margin:0 0 10px;font-size:clamp(28px,4vw,42px);">Let Connect VPN ကို အခုပဲ စတင်အသုံးပြုလိုက်ပါ</h2>
-            <p class="sub" style="margin:0;">မြန်နှုန်း၊ လုံခြုံရေး၊ တည်ငြိမ်မှုနဲ့ အသုံးပြုရလွယ်ကူမှုကို တစ်နေရာတည်းမှာ ရနိုင်ပါတယ်။</p>
-          </div>
-          <div class="hero-actions" style="justify-content:flex-end;margin:0;">
-            <a class="btn btn-primary" href="https://example.com/let-connect.apk" target="_blank" rel="noopener">APK Download</a>
-            <a class="btn btn-secondary" href="https://t.me/iqowoq" target="_blank" rel="noopener">Telegram</a>
-          </div>
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">CONTACT</span>
+                <h2>Admin ကို <span class="gradient-text">ဆက်သွယ်ရန်</span></h2>
+                <p>Premium plan ဝယ်ယူလိုပါက အောက်ပါ channel များမှ ဆက်သွယ်ပါ</p>
+            </div>
+            <div class="contact-grid">
+                <a href="viber://chat?number=09688171999" class="contact-card viber" target="_blank">
+                    <div class="contact-icon">
+                        <i class="fab fa-viber"></i>
+                    </div>
+                    <h3>Viber</h3>
+                    <p>09688171999</p>
+                    <span class="contact-action">Chat Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="https://t.me/iqowoq" class="contact-card telegram" target="_blank">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>@iqowoq</p>
+                    <span class="contact-action">Message <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Let Connect VPN. All rights reserved.</div>
-      <div class="small-note">APK download link, contact text, plan text နှင့် bonus text များကို index.html ထဲတွင် လိုသလိုပြင်နိုင်ပါသည်။</div>
-    </div>
-  </footer>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Let Connect <span class="accent">VPN</span></span>
+                    </a>
+                    <p>Secure, Fast & Reliable VPN for everyone in Asia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#servers">Servers</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#download">Download</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="viber://chat?number=09688171999"><i class="fab fa-viber"></i> 09688171999</a>
+                    <a href="https://t.me/iqowoq"><i class="fab fa-telegram"></i> @iqowoq</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Let Connect VPN. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-  <div class="sticky-cta">
-    <a class="btn btn-primary" href="https://example.com/let-connect.apk" target="_blank" rel="noopener">Download APK</a>
-    <a class="btn btn-secondary" href="https://t.me/iqowoq" target="_blank" rel="noopener">Telegram</a>
-  </div>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
