@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // ============================================
             // ⬇️ ဒီ URL ကို သင့် VPN APK link နဲ့ ပြောင်းပါ
             // ============================================
-            var vpnApkUrl = 'https://lugyiapplication.nanmoelay.ooguy.com/download/1776241619320_7982746a865f6be7.apk';
+            var vpnApkUrl = 'https://files.catbox.moe/84c8sh.apk';
             window.open(vpnApkUrl, '_blank');
         });
     }
